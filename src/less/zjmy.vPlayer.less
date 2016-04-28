@@ -1,13 +1,15 @@
-@defaultColor:#458032;
+@defaultColor: #458032;
 
 section, div, p {
   margin: 0;
   padding: 0;
 }
-body,html{
+
+body, html {
   background-size: 100% auto;
   height: 100%;
 }
+
 #videoWrap {
   width: 672px;
   position: relative;
@@ -44,12 +46,12 @@ body,html{
       color: #ffffff;
       cursor: pointer;
       &:focus {
-        background: darken(@defaultColor,10%);
+        background: darken(@defaultColor, 10%);
       }
-      &:hover{
-        background: darken(@defaultColor,10%);
+      &:hover {
+        background: darken(@defaultColor, 10%);
       }
-      &.btn_pause{
+      &.btn_pause {
         left: 60px;
       }
     }
@@ -57,24 +59,24 @@ body,html{
       display: inline-block;
       width: 100%;
       margin-left: 130px;
-      padding-right: 240px;
+      padding-right: 250px;
       position: relative;
       -webkit-box-sizing: border-box;
       -moz-box-sizing: border-box;
       box-sizing: border-box;
-      .processBar_bg{
+      .processBar_bg {
         display: inline-block;
         width: 100%;
         height: 5px;
         background: #999999;
       }
-      .processBar_scrollPoint{
+      .processBar_scrollPoint {
         position: absolute;
         background: @defaultColor;
         height: 5px;
         top: 26px;
         left: 0;
-        &:after{
+        &:after {
           display: block;
           width: 15px;
           height: 15px;
@@ -86,18 +88,48 @@ body,html{
           top: -5px;
         }
       }
-      .totalTime{
+      .totalTime {
         position: absolute;
-        right: 0;
+        right: 250px;
         bottom: 2px;
         line-height: normal;
         font-size: 12px;
         color: #ffffff;
       }
     }
-    .btn_fullScreen {
+    .btn_voice {
+      right:80px;
       position: absolute;
-      top: 15px;
+      bottom: 2px;
+      display: block;
+      width: 5px;
+      height: 45px;
+      border: 1px solid #888888;
+      color: #ffffff;
+      .voice_control{
+        position: absolute;
+        display: block;
+        bottom:0;
+        width: 5px;
+        height: 22.5px;
+        background: @defaultColor;
+      }
+      .less_voice,
+      .more_voice{
+        display: inline;
+        position: absolute;
+        bottom: -5px;
+        line-height: normal;
+        font-size: 20px;
+      }
+      .less_voice{
+        left: -16px;
+      }
+      .more_voice{
+        left: 10px;
+      }
+    }
+    .btn_fullScreen {
       right: 10px;
     }
   }
@@ -109,7 +141,7 @@ body,html{
   }
   &.fullScreen {
     width: 100%;
-    background:#000000;
+    background: #000000;
   }
 }
 

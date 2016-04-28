@@ -25,14 +25,16 @@
 
     VideoPlay.prototype.init = function () {
         this.videoPlayer.attr('src', this.videoPath);
-        this.loaded();
+        this.videoPlayer.get(0).volume = 0.5;
+        this.loadedMeta();
         this.eventHandle();
         this.end();
     };
 
-    VideoPlay.prototype.loaded = function () {
+    VideoPlay.prototype.loadedMeta = function () {
         var _this = this;
-        this.videoPlayer.on('loadeddata', function (e) {
+        this.videoPlayer.on('loadedmetadata', function (e) {
+            console.log(e)
             var timeStr;
             _this.store['duration'] = e.target.duration;
             timeStr = _this.unit.formateTime(e.target.duration).join(':');
@@ -49,6 +51,8 @@
     };
     VideoPlay.prototype.eventHandle = function () {
         var _this = this,
+            $lessVoice = this.videoWrap.find('.less_voice'),
+            $moreVoice = this.videoWrap.find('.more_voice'),
             $button = this.videoWrap.find('button');
         $button.on('click', function (e) {
             switch (e.target.className) {
@@ -74,18 +78,39 @@
                     }
                     break;
             }
+        });
+        //音量控制
+        $lessVoice.on('click', function (e) {
+            var volume = _this.videoPlayer.get(0).volume;
+            volume = (volume - 0.1).toFixed(1);
+            if(volume<=0){
+                volume=0;
+            }
+            _this.videoPlayer.get(0).volume = volume;
+            console.log(_this.videoPlayer.get(0).volume);
+            _this.videoWrap.find('.voice_control').height(_this.videoWrap.find('.btn_voice').height()*volume)
+        });
+        $moreVoice.on('click', function (e) {
+            var volume = _this.videoPlayer.get(0).volume;
+            volume = (volume + 0.1).toFixed(1);
+            if(volume>=1){
+                volume=1;
+            }
+            _this.videoPlayer.get(0).volume = volume;
+            console.log(_this.videoPlayer.get(0).volume);
+            _this.videoWrap.find('.voice_control').height(_this.videoWrap.find('.btn_voice').height()*volume)
         })
     };
     VideoPlay.prototype.timerFn = function () {
         console.log(this);
-        var _this=this;
-        _this.timer=setInterval(function(){
+        var _this = this;
+        _this.timer = setInterval(function () {
             _this.store.currentTime++;
             if (_this.store.currentTime >= Math.ceil(_this.store.duration)) {
                 clearInterval(this.timer);
             }
             _this.unit.scrollBarFn(_this.videoWrap, _this.store);
-        },1000);
+        }, 1000);
 
     }
 
