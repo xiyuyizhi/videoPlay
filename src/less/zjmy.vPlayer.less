@@ -25,14 +25,16 @@ body,html{
     bottom: 3px;
     background: rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    display: none;
+    /*display: none;*/
+    overflow: hidden;
     -webkit-transition: all 1s;
     -moz-transition: all 1s;
     -ms-transition: all 1s;
     -o-transition: all 1s;
     transition: all 1s;
     button {
-      cursor: pointer;
+      position: absolute;
+      top: 15px;
       margin-left: 10px;
       padding: 5px 10px;
       border: none;
@@ -40,17 +42,26 @@ body,html{
       outline: none;
       background: @defaultColor;
       color: #ffffff;
+      cursor: pointer;
       &:focus {
         background: darken(@defaultColor,10%);
       }
       &:hover{
         background: darken(@defaultColor,10%);
       }
+      &.btn_pause{
+        left: 60px;
+      }
     }
     .processBar {
       display: inline-block;
-      width: 70%;
+      width: 100%;
+      margin-left: 130px;
+      padding-right: 240px;
       position: relative;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
       .processBar_bg{
         display: inline-block;
         width: 100%;
@@ -62,6 +73,7 @@ body,html{
         background: @defaultColor;
         height: 5px;
         top: 26px;
+        left: 0;
         &:after{
           display: block;
           width: 15px;
