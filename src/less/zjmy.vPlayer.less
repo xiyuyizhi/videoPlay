@@ -1,0 +1,103 @@
+@defaultColor:#458032;
+
+section, div, p {
+  margin: 0;
+  padding: 0;
+}
+body,html{
+  background-size: 100% auto;
+  height: 100%;
+}
+#videoWrap {
+  width: 672px;
+  position: relative;
+  .video {
+    &.fullScreen {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .menu {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    position: absolute;
+    bottom: 3px;
+    background: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: none;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+    button {
+      cursor: pointer;
+      margin-left: 10px;
+      padding: 5px 10px;
+      border: none;
+      border-radius: 5px;
+      outline: none;
+      background: @defaultColor;
+      color: #ffffff;
+      &:focus {
+        background: darken(@defaultColor,10%);
+      }
+      &:hover{
+        background: darken(@defaultColor,10%);
+      }
+    }
+    .processBar {
+      display: inline-block;
+      width: 70%;
+      position: relative;
+      .processBar_bg{
+        display: inline-block;
+        width: 100%;
+        height: 5px;
+        background: #999999;
+      }
+      .processBar_scrollPoint{
+        position: absolute;
+        background: @defaultColor;
+        height: 5px;
+        top: 26px;
+        &:after{
+          display: block;
+          width: 15px;
+          height: 15px;
+          border-radius: 100%;
+          content: '';
+          background: @defaultColor;
+          position: absolute;
+          right: -10px;
+          top: -5px;
+        }
+      }
+      .totalTime{
+        position: absolute;
+        right: 0;
+        bottom: 2px;
+        line-height: normal;
+        font-size: 12px;
+        color: #ffffff;
+      }
+    }
+    .btn_fullScreen {
+      position: absolute;
+      top: 15px;
+      right: 10px;
+    }
+  }
+  &:hover {
+    .menu {
+      height: 50px;
+      display: block;
+    }
+  }
+  &.fullScreen {
+    width: 100%;
+    background:#000000;
+  }
+}
+
