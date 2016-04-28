@@ -13,6 +13,7 @@ body, html {
 #videoWrap {
   width: 672px;
   position: relative;
+  overflow: hidden;
   .video {
     &.fullScreen {
       width: 100%;
@@ -24,10 +25,11 @@ body, html {
     height: 50px;
     line-height: 50px;
     position: absolute;
-    bottom: 3px;
+    bottom: 15px;
+    left: -800px;
     background: rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    /*display: none;*/
+    display: block;
     overflow: hidden;
     -webkit-transition: all 1s;
     -moz-transition: all 1s;
@@ -98,7 +100,7 @@ body, html {
       }
     }
     .btn_voice {
-      right:80px;
+      right: 80px;
       position: absolute;
       bottom: 2px;
       display: block;
@@ -106,26 +108,26 @@ body, html {
       height: 45px;
       border: 1px solid #888888;
       color: #ffffff;
-      .voice_control{
+      .voice_control {
         position: absolute;
         display: block;
-        bottom:0;
+        bottom: 0;
         width: 5px;
         height: 22.5px;
         background: @defaultColor;
       }
       .less_voice,
-      .more_voice{
+      .more_voice {
         display: inline;
         position: absolute;
         bottom: -5px;
         line-height: normal;
         font-size: 20px;
       }
-      .less_voice{
+      .less_voice {
         left: -16px;
       }
-      .more_voice{
+      .more_voice {
         left: 10px;
       }
     }
@@ -135,8 +137,7 @@ body, html {
   }
   &:hover {
     .menu {
-      height: 50px;
-      display: block;
+      left: 0px;
     }
   }
   &.fullScreen {

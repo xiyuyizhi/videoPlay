@@ -14,7 +14,9 @@
     function VideoPlay($obj, op) {
         var options = {
             'autoplay': false,
-            'volume': 0.5
+            'volume': 0.5,
+            'videoWidth': 600,
+            'videoHeight': 350
         };
         this.options = $.extend(options, op);
         console.log(this.options);
@@ -30,10 +32,14 @@
     }
 
     VideoPlay.prototype.init = function () {
+        var objVideo = this.videoPlayer.get(0);
         this.videoPlayer.attr('src', this.videoPath);
-        this.videoPlayer.get(0).volume = this.options.volume;
-        if(this.options.autoplay){//自动播放
-            this.videoPlayer.get(0).autoplay=true;
+        objVideo.volume = this.options.volume;
+        objVideo.width = this.options.videoWidth;
+        objVideo.height = this.options.videoHeight;
+        this.videoWrap.width(this.options.videoWidth);
+        if (this.options.autoplay) {//自动播放
+            objVideo.autoplay = true;
             this.playing();
         }
         this.loadedMeta();
@@ -51,10 +57,11 @@
             _this.videoWrap.find('.totalTime').html(timeStr);
         })
     };
-    VideoPlay.prototype.playing=function(){
-        var _this=this;
+    VideoPlay.prototype.playing = function () {
+        var _this = this;
         this.videoPlayer.on('playing', function (e) {
-            console.log('playing')
+            console.log('playing');
+            console.log(e.target.seekable)
             clearInterval(_this.timer);
             _this.timerFn();
         })
@@ -75,7 +82,9 @@
         $button.on('click', function (e) {
             switch (e.target.className) {
                 case 'btn_play':
+                    console.log(_this.videoPlayer.get(0).seekable);
                     _this.videoPlayer.get(0).play();
+                    _this.videoPlayer.get(0).currentTime=50;
                     clearInterval(_this.timer);
                     _this.timerFn();
                     break;
@@ -179,5 +188,4 @@ Unit.prototype.scrollBarFn = function ($obj, store) {
         pointWidth = (store.currentTime / store.duration) * $processBar_bg.width();
     pointWidth = Math.ceil(pointWidth);
     $scrollPoint.css('width', pointWidth + 'px');
-    console.log(pointWidth);
 }
