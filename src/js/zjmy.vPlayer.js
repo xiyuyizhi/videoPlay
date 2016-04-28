@@ -11,7 +11,13 @@
 (function (w) {
     w.VideoPlay = VideoPlay;
 
-    function VideoPlay($obj, videoPath) {
+    function VideoPlay($obj, op) {
+        var options = {
+            'autoplay': false,
+            'volume': 0.5
+        };
+        this.options = $.extend(options, op);
+        console.log(this.options);
         this.timer = null;
         this.store = {
             'duration': 0,
@@ -19,13 +25,17 @@
         };
         this.videoPlayer = $obj;
         this.videoWrap = $obj.parent();
-        this.videoPath = videoPath;
+        this.videoPath = this.options.path;
         this.unit = new Unit();
     }
 
     VideoPlay.prototype.init = function () {
         this.videoPlayer.attr('src', this.videoPath);
-        this.videoPlayer.get(0).volume = 0.5;
+        this.videoPlayer.get(0).volume = this.options.volume;
+        if(this.options.autoplay){//自动播放
+            this.videoPlayer.get(0).autoplay=true;
+            this.playing();
+        }
         this.loadedMeta();
         this.eventHandle();
         this.end();
@@ -39,6 +49,14 @@
             _this.store['duration'] = e.target.duration;
             timeStr = _this.unit.formateTime(e.target.duration).join(':');
             _this.videoWrap.find('.totalTime').html(timeStr);
+        })
+    };
+    VideoPlay.prototype.playing=function(){
+        var _this=this;
+        this.videoPlayer.on('playing', function (e) {
+            console.log('playing')
+            clearInterval(_this.timer);
+            _this.timerFn();
         })
     };
     VideoPlay.prototype.end = function () {
@@ -82,23 +100,11 @@
         //音量控制
         $lessVoice.on('click', function (e) {
             var volume = _this.videoPlayer.get(0).volume;
-            volume = (volume - 0.1).toFixed(1);
-            if(volume<=0){
-                volume=0;
-            }
-            _this.videoPlayer.get(0).volume = volume;
-            console.log(_this.videoPlayer.get(0).volume);
-            _this.videoWrap.find('.voice_control').height(_this.videoWrap.find('.btn_voice').height()*volume)
+            _this.voiceControl(volume, 'less')
         });
         $moreVoice.on('click', function (e) {
             var volume = _this.videoPlayer.get(0).volume;
-            volume = (volume + 0.1).toFixed(1);
-            if(volume>=1){
-                volume=1;
-            }
-            _this.videoPlayer.get(0).volume = volume;
-            console.log(_this.videoPlayer.get(0).volume);
-            _this.videoWrap.find('.voice_control').height(_this.videoWrap.find('.btn_voice').height()*volume)
+            _this.voiceControl(volume, 'more')
         })
     };
     VideoPlay.prototype.timerFn = function () {
@@ -112,8 +118,23 @@
             _this.unit.scrollBarFn(_this.videoWrap, _this.store);
         }, 1000);
 
-    }
+    };
 
+    VideoPlay.prototype.voiceControl = function (v, type) {
+        if (type == 'less') {
+            v = (v - 0.1).toFixed(1);
+            if (v <= 0) {
+                v = 0;
+            }
+        } else {
+            v = (v + 0.1).toFixed(1);
+            if (v >= 1) {
+                v = 1;
+            }
+        }
+        this.videoPlayer.get(0).volume = v;
+        this.videoWrap.find('.voice_control').height(this.videoWrap.find('.btn_voice').height() * v)
+    }
 })(window);
 
 
