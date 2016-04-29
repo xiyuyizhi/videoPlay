@@ -82,11 +82,17 @@
             $process = this.videoWrap.find('.processBar_control'),
             $processBar_scrollPoint = this.videoWrap.find('.processBar_scrollPoint');
         $process.on('mousedown', function (e) {
+            if(_this.videoPlayer.get(0).seekable.end(0)==0){
+                return false;
+            }
             $(this).on('mousemove', movePoint);
         });
 
         $(document).on('mouseup', function (e) {
             console.log('document up');
+            if(_this.videoPlayer.get(0).seekable.end(0)==0){
+                return false;
+            }
             if (e.target.className == 'processBar_bg' || e.target.className == 'processBar_scrollPoint') {
                 movePoint(e);
             }
