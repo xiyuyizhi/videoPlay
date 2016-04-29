@@ -51,7 +51,7 @@
     VideoPlay.prototype.loadedMeta = function () {
         var _this = this;
         this.videoPlayer.on('loadedmetadata', function (e) {
-            console.log(e)
+            console.log(e);
             var timeStr;
             _this.store['duration'] = e.target.duration;
             timeStr = _this.unit.formateTime(e.target.duration).join(':');
@@ -62,7 +62,7 @@
         var _this = this;
         this.videoPlayer.on('playing', function (e) {
             console.log('playing');
-            console.log(e.target.seekable)
+            console.log(e.target.seekable);
             clearInterval(_this.timer);
             _this.timerFn();
         })
@@ -84,12 +84,12 @@
         $process.on('mousedown', function (e) {
             $(this).on('mousemove', movePoint);
         });
-        $process.on('mouseup', function (e) {
-            console.log('process up')
-            $(this).off('mousemove', movePoint);
-        });
+
         $(document).on('mouseup', function (e) {
             console.log('document up');
+            if (e.target.className == 'processBar_bg' || e.target.className == 'processBar_scrollPoint') {
+                movePoint(e);
+            }
             _this.videoWrap.find('.slide_time').removeClass('active');
             $process.off('mousemove', movePoint);
         });
@@ -118,7 +118,6 @@
         $button.on('click', function (e) {
             switch (e.target.className) {
                 case 'btn_play':
-                    console.log(_this.videoPlayer.get(0).seekable);
                     _this.videoPlayer.get(0).play();
                     clearInterval(_this.timer);
                     _this.timerFn();
@@ -225,4 +224,4 @@ Unit.prototype.scrollBarFn = function ($obj, store) {
         pointWidth = (store.currentTime / store.duration) * $processBar_bg.width();
     pointWidth = Math.ceil(pointWidth);
     $scrollPoint.css('width', pointWidth + 'px');
-}
+};

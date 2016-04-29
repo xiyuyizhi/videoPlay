@@ -24,8 +24,8 @@
       <file leaf-file-name="videoPlayer.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/videoPlayer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.5333333">
-              <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
+            <state vertical-scroll-proportion="-9.1">
+              <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
               <folding />
             </state>
           </provider>
@@ -44,12 +44,14 @@
       <file leaf-file-name="zjmy.vPlayer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/js/zjmy.vPlayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.51641136">
-              <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+            <state vertical-scroll-proportion="1.0547045">
+              <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
               <folding>
-                <element signature="e#6033#6444#0" expanded="false" />
-                <element signature="e#6538#7324#0" expanded="false" />
-                <element signature="e#7387#7679#0" expanded="false" />
+                <element signature="e#1347#1699#0" expanded="false" />
+                <element signature="e#2309#3743#0" expanded="false" />
+                <element signature="e#3071#3736#0" expanded="false" />
+                <element signature="e#5974#6385#0" expanded="false" />
+                <element signature="e#6479#7265#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -89,10 +91,10 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/js/zjmy.vPlayer.js" />
         <option value="$PROJECT_DIR$/src/less/zjmy.vPlayer.less" />
-        <option value="$PROJECT_DIR$/src/videoPlayer.html" />
         <option value="$PROJECT_DIR$/src/js/app.js" />
+        <option value="$PROJECT_DIR$/src/videoPlayer.html" />
+        <option value="$PROJECT_DIR$/src/js/zjmy.vPlayer.js" />
       </list>
     </option>
   </component>
@@ -364,9 +366,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#6033#6444#0" expanded="false" />
-            <element signature="e#6538#7324#0" expanded="false" />
-            <element signature="e#7387#7679#0" expanded="false" />
+            <element signature="e#1347#1699#0" expanded="false" />
+            <element signature="e#2309#3743#0" expanded="false" />
+            <element signature="e#3071#3736#0" expanded="false" />
+            <element signature="e#5974#6385#0" expanded="false" />
+            <element signature="e#6479#7265#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -436,14 +440,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/videoPlayer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.5333333">
-          <caret line="31" column="12" selection-start-line="31" selection-start-column="12" selection-end-line="31" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -452,14 +448,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/videoPlayer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.1">
+          <caret line="19" column="47" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/zjmy.vPlayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.51641136">
-          <caret line="105" column="60" selection-start-line="105" selection-start-column="60" selection-end-line="105" selection-end-column="60" />
+        <state vertical-scroll-proportion="1.0547045">
+          <caret line="78" column="53" selection-start-line="78" selection-start-column="53" selection-end-line="78" selection-end-column="53" />
           <folding>
-            <element signature="e#6033#6444#0" expanded="false" />
-            <element signature="e#6538#7324#0" expanded="false" />
-            <element signature="e#7387#7679#0" expanded="false" />
+            <element signature="e#1347#1699#0" expanded="false" />
+            <element signature="e#2309#3743#0" expanded="false" />
+            <element signature="e#3071#3736#0" expanded="false" />
+            <element signature="e#5974#6385#0" expanded="false" />
+            <element signature="e#6479#7265#0" expanded="false" />
           </folding>
         </state>
       </provider>
