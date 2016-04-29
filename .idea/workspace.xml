@@ -44,10 +44,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zjmy.vPlayer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="zjmy.vPlayer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/zjmy.vPlayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52164006">
+            <state vertical-scroll-proportion="0.0">
               <caret line="163" column="45" selection-start-line="163" selection-start-column="45" selection-end-line="163" selection-end-column="45" />
               <folding>
                 <element signature="e#3030#3584#0" expanded="false" />
@@ -58,12 +58,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zjmy.vPlayer.less" pinned="false" current-in-tab="false">
+      <file leaf-file-name="zjmy.vPlayer.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/less/zjmy.vPlayer.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.633333">
-              <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-              <folding />
+            <state vertical-scroll-proportion="0.6259169">
+              <caret line="20" column="3250" selection-start-line="20" selection-start-column="3250" selection-end-line="20" selection-end-column="3250" />
+              <folding>
+                <element signature="e#292#3527#1" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -100,8 +102,8 @@
         <option value="$PROJECT_DIR$/src/videoPlayer.html" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
         <option value="$PROJECT_DIR$/src/js/app.js" />
-        <option value="$PROJECT_DIR$/src/less/zjmy.vPlayer.less" />
         <option value="$PROJECT_DIR$/src/js/zjmy.vPlayer.js" />
+        <option value="$PROJECT_DIR$/src/less/zjmy.vPlayer.less" />
       </list>
     </option>
   </component>
@@ -387,7 +389,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
-          <folding />
+          <folding>
+            <element signature="e#292#3527#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -426,7 +430,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="e#292#3527#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -465,7 +471,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="18" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="18" />
-          <folding />
+          <folding>
+            <element signature="e#292#3527#1" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -525,22 +533,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/less/zjmy.vPlayer.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.633333">
-          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/js/zjmy.vPlayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52164006">
+        <state vertical-scroll-proportion="0.0">
           <caret line="163" column="45" selection-start-line="163" selection-start-column="45" selection-end-line="163" selection-end-column="45" />
           <folding>
             <element signature="e#3030#3584#0" expanded="false" />
             <element signature="e#7002#7413#0" expanded="false" />
             <element signature="e#7507#8293#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/less/zjmy.vPlayer.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6259169">
+          <caret line="20" column="3250" selection-start-line="20" selection-start-column="3250" selection-end-line="20" selection-end-column="3250" />
+          <folding>
+            <element signature="e#292#3527#1" expanded="true" />
           </folding>
         </state>
       </provider>
