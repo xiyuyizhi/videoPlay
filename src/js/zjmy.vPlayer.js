@@ -127,6 +127,7 @@
                     clearInterval(_this.timer);
                     break;
                 case 'btn_fullScreen':
+                    var percent=_this.store.currentTime/_this.store.duration;
                     if ($(this).text() == '全屏') {
                         _this.videoWrap.addClass('fullScreen');
                         _this.videoPlayer.addClass('fullScreen');
@@ -139,6 +140,7 @@
                         _this.videoWrap.css('width', _this.options.videoWidth);
                         $(this).text('全屏')
                     }
+                    _this.videoWrap.find('.processBar_scrollPoint').width(percent*_this.videoWrap.find('.processBar_bg').width());
                     break;
             }
         });
