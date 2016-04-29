@@ -42,13 +42,13 @@
             objVideo.autoplay = true;
             this.playing();
         }
-        this.loadedMeta();
+        this.load();
         this.processControl();
         this.eventHandle();
         this.end();
     };
 
-    VideoPlay.prototype.loadedMeta = function () {
+    VideoPlay.prototype.load = function () {
         var _this = this;
         this.videoPlayer.on('loadedmetadata', function (e) {
             console.log(e);
@@ -56,13 +56,19 @@
             _this.store['duration'] = e.target.duration;
             timeStr = _this.unit.formateTime(e.target.duration).join(':');
             _this.videoWrap.find('.totalTime').html(timeStr);
-        })
+        });
+        this.videoPlayer.on('loadstart',function(e){
+            console.log('loadstart');
+        });
+        this.videoPlayer.on('canplay',function(e){
+            console.log('canplay');
+            _this.videoWrap.find('.loading').addClass('active')
+        });
     };
     VideoPlay.prototype.playing = function () {
         var _this = this;
         this.videoPlayer.on('playing', function (e) {
             console.log('playing');
-            console.log(e.target.seekable);
             clearInterval(_this.timer);
             _this.timerFn();
         })
@@ -93,10 +99,13 @@
             if(_this.videoPlayer.get(0).seekable.end(0)==0){
                 return false;
             }
+            _this.videoWrap.find('.slide_time').addClass('active');
             if (e.target.className == 'processBar_bg' || e.target.className == 'processBar_scrollPoint') {
                 movePoint(e);
             }
-            _this.videoWrap.find('.slide_time').removeClass('active');
+            setTimeout(function(){
+                _this.videoWrap.find('.slide_time').removeClass('active');
+            },100)
             $process.off('mousemove', movePoint);
         });
 
@@ -150,6 +159,13 @@
                     break;
             }
         });
+        //seeking
+        this.videoPlayer.on('seeking',function(e){
+            _this.videoWrap.find('.loading').removeClass('active')
+        })
+        this.videoPlayer.on('seeked',function(e){
+            _this.videoWrap.find('.loading').addClass('active')
+        })
         //音量控制
         $lessVoice.on('click', function (e) {
             var volume = _this.videoPlayer.get(0).volume;
