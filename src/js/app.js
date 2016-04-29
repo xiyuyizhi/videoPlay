@@ -3,7 +3,7 @@
  */
 $(function(){
     var player=new VideoPlay($('#video'),{
-        'path':'2.mp4',
+        'path':'1.mp4',
         'autoplay':false
     });
     player.init();

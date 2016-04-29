@@ -43,6 +43,7 @@
             this.playing();
         }
         this.loadedMeta();
+        this.processControl();
         this.eventHandle();
         this.end();
     };
@@ -74,6 +75,69 @@
             clearInterval(_this.timer);
         });
     };
+
+    VideoPlay.prototype.processControl=function(){
+        var _this=this,
+            originX,
+            distance,//本次移动的距离
+            originDistance=0,//保存上次移动的距离，下次移动时使用
+            $process=this.videoWrap.find('.processBar_control'),
+            $processBar_scrollPoint=_this.videoWrap.find('.processBar_scrollPoint');
+        var process_up_x=0,
+            document_up_x=0;
+        $process.on('mousedown',function(e){
+            originX=e.clientX;
+            console.log('originX '+e.clientX);
+            $(this).on('mousemove',movePoint);
+            $process.on('mouseup',function(e){
+                movePoint(e);
+                console.log('process up clientX '+ e.clientX);
+                process_up_x= e.clientX;
+                originDistance+=e.clientX-originX;
+                if(originDistance<=0){
+                    originDistance=0;
+                };
+                if(originDistance>=_this.videoWrap.find('.processBar_bg').width()){
+                    originDistance=_this.videoWrap.find('.processBar_bg').width();
+                }
+                console.log('originDistance '+originDistance);
+                $process.off('mousemove',movePoint);
+            });
+        });
+
+        $(document).on('mouseup',function(e){
+            $process.off('mousemove',movePoint);
+        })
+        /*$(document).on('mouseup',function(e){
+         console.log('document up clientX '+ e.clientX);
+         document_up_x= e.clientX;
+         if(document_up_x!==process_up_x && process_up_x!=0){
+         if(document_up_x-135>_this.videoWrap.find('.processBar_bg').width()){
+         document_up_x=_this.videoWrap.find('.processBar_bg').width()+135;
+         }
+         process_up_x=document_up_x;
+         $processBar_scrollPoint.width(document_up_x-135);
+         originDistance+=e.clientX-originX;
+         if(originDistance<=0){
+         originDistance=0;
+         };
+         if(originDistance>=_this.videoWrap.find('.processBar_bg').width()){
+         originDistance=_this.videoWrap.find('.processBar_bg').width();
+         }
+         console.log('originDistance '+originDistance);
+         }
+         $process.off('mousemove',movePoint);
+
+         });*/
+
+        function movePoint(e){
+            distance=e.clientX-originX;
+            console.log('distance '+distance);
+            $processBar_scrollPoint.width(originDistance+distance);
+        }
+
+    };
+
     VideoPlay.prototype.eventHandle = function () {
         var _this = this,
             $lessVoice = this.videoWrap.find('.less_voice'),
@@ -84,7 +148,6 @@
                 case 'btn_play':
                     console.log(_this.videoPlayer.get(0).seekable);
                     _this.videoPlayer.get(0).play();
-                    _this.videoPlayer.get(0).currentTime=50;
                     clearInterval(_this.timer);
                     _this.timerFn();
                     break;
@@ -96,11 +159,13 @@
                     if ($(this).text() == '全屏') {
                         _this.videoWrap.addClass('fullScreen');
                         _this.videoPlayer.addClass('fullScreen');
+                        _this.videoWrap.css('width','100%');
                         $(this).text('还原');
                     }
                     else {
                         _this.videoWrap.removeClass('fullScreen');
                         _this.videoPlayer.removeClass('fullScreen');
+                        _this.videoWrap.css('width',_this.options.videoWidth);
                         $(this).text('全屏')
                     }
                     break;
