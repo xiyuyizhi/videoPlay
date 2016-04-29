@@ -76,64 +76,36 @@
         });
     };
 
-    VideoPlay.prototype.processControl=function(){
-        var _this=this,
-            originX,
-            distance,//本次移动的距离
-            originDistance=0,//保存上次移动的距离，下次移动时使用
-            $process=this.videoWrap.find('.processBar_control'),
-            $processBar_scrollPoint=_this.videoWrap.find('.processBar_scrollPoint');
-        var process_up_x=0,
-            document_up_x=0;
-        $process.on('mousedown',function(e){
-            originX=e.clientX;
-            console.log('originX '+e.clientX);
-            $(this).on('mousemove',movePoint);
-            $process.on('mouseup',function(e){
-                movePoint(e);
-                console.log('process up clientX '+ e.clientX);
-                process_up_x= e.clientX;
-                originDistance+=e.clientX-originX;
-                if(originDistance<=0){
-                    originDistance=0;
-                };
-                if(originDistance>=_this.videoWrap.find('.processBar_bg').width()){
-                    originDistance=_this.videoWrap.find('.processBar_bg').width();
-                }
-                console.log('originDistance '+originDistance);
-                $process.off('mousemove',movePoint);
-            });
+    VideoPlay.prototype.processControl = function () {
+        var _this = this,
+            $processBar_bg = this.videoWrap.find('.processBar_bg'),
+            $process = this.videoWrap.find('.processBar_control'),
+            $processBar_scrollPoint = this.videoWrap.find('.processBar_scrollPoint');
+        $process.on('mousedown', function (e) {
+            $(this).on('mousemove', movePoint);
+        });
+        $process.on('mouseup', function (e) {
+            console.log('process up')
+            $(this).off('mousemove', movePoint);
+        });
+        $(document).on('mouseup', function (e) {
+            console.log('document up');
+            _this.videoWrap.find('.slide_time').removeClass('active');
+            $process.off('mousemove', movePoint);
         });
 
-        $(document).on('mouseup',function(e){
-            $process.off('mousemove',movePoint);
-        })
-        /*$(document).on('mouseup',function(e){
-         console.log('document up clientX '+ e.clientX);
-         document_up_x= e.clientX;
-         if(document_up_x!==process_up_x && process_up_x!=0){
-         if(document_up_x-135>_this.videoWrap.find('.processBar_bg').width()){
-         document_up_x=_this.videoWrap.find('.processBar_bg').width()+135;
-         }
-         process_up_x=document_up_x;
-         $processBar_scrollPoint.width(document_up_x-135);
-         originDistance+=e.clientX-originX;
-         if(originDistance<=0){
-         originDistance=0;
-         };
-         if(originDistance>=_this.videoWrap.find('.processBar_bg').width()){
-         originDistance=_this.videoWrap.find('.processBar_bg').width();
-         }
-         console.log('originDistance '+originDistance);
-         }
-         $process.off('mousemove',movePoint);
-
-         });*/
-
-        function movePoint(e){
-            distance=e.clientX-originX;
-            console.log('distance '+distance);
-            $processBar_scrollPoint.width(originDistance+distance);
+        function movePoint(e) {
+            if (e.clientX - 135 <= 0) {
+                e.clientX = 135;
+            } else if (e.clientX - 135 > $processBar_bg.width()) {
+                e.clientX = $processBar_bg.width() + 135;
+            }
+            var currentTime = Math.ceil(_this.store.duration * (e.clientX - 135) / $processBar_bg.width()),
+                time = _this.unit.formateTime(currentTime).join(':');
+            _this.videoPlayer.get(0).currentTime = currentTime;
+            _this.store.currentTime = parseInt(currentTime);
+            _this.videoWrap.find('.slide_time').addClass('active').html(time);
+            $processBar_scrollPoint.width(e.clientX - 135);
         }
 
     };
@@ -159,13 +131,13 @@
                     if ($(this).text() == '全屏') {
                         _this.videoWrap.addClass('fullScreen');
                         _this.videoPlayer.addClass('fullScreen');
-                        _this.videoWrap.css('width','100%');
+                        _this.videoWrap.css('width', '100%');
                         $(this).text('还原');
                     }
                     else {
                         _this.videoWrap.removeClass('fullScreen');
                         _this.videoPlayer.removeClass('fullScreen');
-                        _this.videoWrap.css('width',_this.options.videoWidth);
+                        _this.videoWrap.css('width', _this.options.videoWidth);
                         $(this).text('全屏')
                     }
                     break;
