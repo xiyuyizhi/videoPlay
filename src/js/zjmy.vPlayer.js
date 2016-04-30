@@ -79,6 +79,7 @@
             console.log('ended');
             _this.store['currentTime'] = 0;
             clearInterval(_this.timer);
+            _this.videoWrap.find('.slide_time').html(_this.videoWrap.find('.totalTime').html())
         });
     };
 
@@ -92,6 +93,7 @@
                 return false;
             }
             $(this).on('mousemove', movePoint);
+            clearInterval(_this.timer);
         });
 
         $(document).on('mouseup', function (e) {
@@ -105,8 +107,9 @@
             }
             setTimeout(function(){
                 _this.videoWrap.find('.slide_time').removeClass('active');
-            },100)
+            },100);
             $process.off('mousemove', movePoint);
+            _this.timerFn();
         });
 
         function movePoint(e) {
@@ -123,6 +126,12 @@
             $processBar_scrollPoint.width(e.clientX - 135);
         }
 
+        //显示当前正在播放的时间
+        $process.hover(function(){
+            _this.videoWrap.find('.slide_time').addClass('active');
+        },function(){
+            _this.videoWrap.find('.slide_time').removeClass('active')
+        })
     };
 
     VideoPlay.prototype.eventHandle = function () {
@@ -179,14 +188,17 @@
     VideoPlay.prototype.timerFn = function () {
         console.log(this);
         var _this = this;
+        var time;
+        clearInterval(_this.timer);
         _this.timer = setInterval(function () {
             _this.store.currentTime++;
             if (_this.store.currentTime >= Math.ceil(_this.store.duration)) {
                 clearInterval(this.timer);
             }
             _this.unit.scrollBarFn(_this.videoWrap, _this.store);
+            time= _this.unit.formateTime(_this.store.currentTime).join(':');
+            _this.videoWrap.find('.slide_time').html(time);
         }, 1000);
-
     };
 
     VideoPlay.prototype.voiceControl = function (v, type) {
@@ -221,14 +233,14 @@ Unit.prototype.formateTime = function (second) {
             timeArr.push('0' + Math.floor(second / 3600))
         }
         timeArr.push('00').push('00');
-    } else if (second > 60) {
+    } else if (second >= 60) {
         timeArr.push('00');
         if (second >= 60 * 10) {
             timeArr.push(Math.floor(second / 60))
         } else {
             timeArr.push('0' + Math.floor(second / 60))
         }
-        if ((second % 60) > 10) {
+        if (Math.ceil(second % 60) >= 10) {
             timeArr.push(Math.ceil(second % 60))
         } else {
             timeArr.push('0' + Math.ceil(second % 60))
@@ -236,7 +248,7 @@ Unit.prototype.formateTime = function (second) {
     } else {
         timeArr.push('00');
         timeArr.push('00');
-        timeArr.push(Math.ceil(second));
+        timeArr.push(Math.ceil(second)>=10?Math.ceil(second):'0'+Math.ceil(second));
     }
     return timeArr;
 };

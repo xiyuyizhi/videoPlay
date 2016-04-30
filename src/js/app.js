@@ -3,8 +3,7 @@
  */
 $(function(){
     var player=new VideoPlay($('#video'),{
-        //'path':'http://192.168.1.79:9000/rest/download/8fd8e560-f22b-4203-8a1f-1fac5686fb2f',
-        'path':'http://v2.mukewang.com/d79a0b8f-144d-40f6-ac87-5ac2d1e5d6b7/L.mp4?auth_key=1461925505-0-0-83a19ffb08b9e232dcd43d1b5bea9db4',
+        'path':'http://v2.mukewang.com/7aeacc91-158b-4d01-9a66-0d6d81a18c7b/L.mp4?auth_key=1462019838-0-0-28032a8e9a987c1cb8d22eea0af81475',
         //'path':'L.mp4',
         'autoplay':true
     });
