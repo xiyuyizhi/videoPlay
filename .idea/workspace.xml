@@ -24,8 +24,8 @@
       <file leaf-file-name="videoPlayer.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/videoPlayer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.25">
-              <caret line="23" column="36" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="36" />
+            <state vertical-scroll-proportion="-3.40625">
+              <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -41,28 +41,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zjmy.vPlayer.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="zjmy.vPlayer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/js/zjmy.vPlayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5251142">
-              <caret line="114" column="30" selection-start-line="114" selection-start-column="30" selection-end-line="114" selection-end-column="30" />
+            <state vertical-scroll-proportion="-79.42308">
+              <caret line="133" column="47" selection-start-line="133" selection-start-column="47" selection-end-line="133" selection-end-column="47" />
               <folding>
-                <element signature="e#3784#4449#0" expanded="false" />
-                <element signature="e#4737#6920#0" expanded="false" />
-                <element signature="e#7586#7997#0" expanded="false" />
-                <element signature="e#8091#8932#0" expanded="false" />
+                <element signature="e#7759#8170#0" expanded="false" />
+                <element signature="e#8264#9105#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="zjmy.vPlayer.less" pinned="false" current-in-tab="false">
+      <file leaf-file-name="zjmy.vPlayer.less" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/less/zjmy.vPlayer.less">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.67980295">
+              <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
               <folding>
                 <element signature="e#292#3527#1" expanded="true" />
+                <element signature="e#4777#4888#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -97,11 +96,11 @@
         <option value="$PROJECT_DIR$/videoPlayer.html" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/gulpfile.js" />
-        <option value="$PROJECT_DIR$/src/less/zjmy.vPlayer.less" />
-        <option value="$PROJECT_DIR$/src/videoPlayer.html" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/js/app.js" />
+        <option value="$PROJECT_DIR$/src/videoPlayer.html" />
         <option value="$PROJECT_DIR$/src/js/zjmy.vPlayer.js" />
+        <option value="$PROJECT_DIR$/src/less/zjmy.vPlayer.less" />
       </list>
     </option>
   </component>
@@ -327,10 +326,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="163" column="45" selection-start-line="163" selection-start-column="45" selection-end-line="163" selection-end-column="45" />
           <folding>
-            <element signature="e#3784#4449#0" expanded="false" />
-            <element signature="e#4737#6920#0" expanded="false" />
-            <element signature="e#7586#7997#0" expanded="false" />
-            <element signature="e#8091#8932#0" expanded="false" />
+            <element signature="e#7759#8170#0" expanded="false" />
+            <element signature="e#8264#9105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -341,6 +338,7 @@
           <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
           <folding>
             <element signature="e#292#3527#1" expanded="true" />
+            <element signature="e#4777#4888#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -374,10 +372,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="163" column="45" selection-start-line="163" selection-start-column="45" selection-end-line="163" selection-end-column="45" />
           <folding>
-            <element signature="e#3784#4449#0" expanded="false" />
-            <element signature="e#4737#6920#0" expanded="false" />
-            <element signature="e#7586#7997#0" expanded="false" />
-            <element signature="e#8091#8932#0" expanded="false" />
+            <element signature="e#7759#8170#0" expanded="false" />
+            <element signature="e#8264#9105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -388,6 +384,7 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#292#3527#1" expanded="true" />
+            <element signature="e#4777#4888#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -421,10 +418,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="142" column="130" selection-start-line="142" selection-start-column="130" selection-end-line="142" selection-end-column="130" />
           <folding>
-            <element signature="e#3784#4449#0" expanded="false" />
-            <element signature="e#4737#6920#0" expanded="false" />
-            <element signature="e#7586#7997#0" expanded="false" />
-            <element signature="e#8091#8932#0" expanded="false" />
+            <element signature="e#7759#8170#0" expanded="false" />
+            <element signature="e#8264#9105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -435,6 +430,7 @@
           <caret line="28" column="12" selection-start-line="28" selection-start-column="12" selection-end-line="28" selection-end-column="12" />
           <folding>
             <element signature="e#292#3527#1" expanded="true" />
+            <element signature="e#4777#4888#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -460,10 +456,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3784#4449#0" expanded="false" />
-            <element signature="e#4737#6920#0" expanded="false" />
-            <element signature="e#7586#7997#0" expanded="false" />
-            <element signature="e#8091#8932#0" expanded="false" />
+            <element signature="e#7759#8170#0" expanded="false" />
+            <element signature="e#8264#9105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -474,6 +468,7 @@
           <caret line="108" column="20" selection-start-line="108" selection-start-column="20" selection-end-line="108" selection-end-column="20" />
           <folding>
             <element signature="e#292#3527#1" expanded="true" />
+            <element signature="e#4777#4888#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -498,10 +493,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#3784#4449#0" expanded="false" />
-            <element signature="e#4737#6920#0" expanded="false" />
-            <element signature="e#7586#7997#0" expanded="false" />
-            <element signature="e#8091#8932#0" expanded="false" />
+            <element signature="e#7759#8170#0" expanded="false" />
+            <element signature="e#8264#9105#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -512,6 +505,7 @@
           <caret line="27" column="18" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="18" />
           <folding>
             <element signature="e#292#3527#1" expanded="true" />
+            <element signature="e#4777#4888#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -554,20 +548,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/less/zjmy.vPlayer.less">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
-          <folding>
-            <element signature="e#292#3527#1" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/videoPlayer.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.25">
-          <caret line="23" column="36" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="36" />
+        <state vertical-scroll-proportion="-3.40625">
+          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -582,13 +566,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/js/zjmy.vPlayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5251142">
-          <caret line="114" column="30" selection-start-line="114" selection-start-column="30" selection-end-line="114" selection-end-column="30" />
+        <state vertical-scroll-proportion="-79.42308">
+          <caret line="133" column="47" selection-start-line="133" selection-start-column="47" selection-end-line="133" selection-end-column="47" />
           <folding>
-            <element signature="e#3784#4449#0" expanded="false" />
-            <element signature="e#4737#6920#0" expanded="false" />
-            <element signature="e#7586#7997#0" expanded="false" />
-            <element signature="e#8091#8932#0" expanded="false" />
+            <element signature="e#7759#8170#0" expanded="false" />
+            <element signature="e#8264#9105#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/less/zjmy.vPlayer.less">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.67980295">
+          <caret line="38" column="14" selection-start-line="38" selection-start-column="14" selection-end-line="38" selection-end-column="14" />
+          <folding>
+            <element signature="e#292#3527#1" expanded="true" />
+            <element signature="e#4777#4888#0" expanded="false" />
           </folding>
         </state>
       </provider>

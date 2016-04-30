@@ -97,20 +97,7 @@ body, html {
           height: 15px;
           border-radius: 100%;
           background: @defaultColor;
-          .slide_time{
-            position: absolute;
-            top: -15px;
-            left: -10px;
-            padding: 0 2px;
-            border-radius: 5px;
-            line-height: normal;
-            font-size: 10px;
-            background: #eeeeee;
-            display: none;
-            &.active{
-              display: block;
-            }
-          }
+          z-index: 999;
         }
       }
       .totalTime {
@@ -120,6 +107,19 @@ body, html {
         line-height: normal;
         font-size: 12px;
         color: #ffffff;
+      }
+      .over_time{
+        position: absolute;
+        top: 7px;
+        padding: 0 2px;
+        border-radius: 5px;
+        line-height: normal;
+        font-size: 10px;
+        background: #eeeeee;
+        display: none;
+        &.active{
+          display: block;
+        }
       }
     }
     .btn_voice {

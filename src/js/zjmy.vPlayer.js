@@ -79,7 +79,7 @@
             console.log('ended');
             _this.store['currentTime'] = 0;
             clearInterval(_this.timer);
-            _this.videoWrap.find('.slide_time').html(_this.videoWrap.find('.totalTime').html())
+            _this.videoWrap.find('.over_time').html(_this.videoWrap.find('.totalTime').html())
         });
     };
 
@@ -101,13 +101,9 @@
             if(_this.videoPlayer.get(0).seekable.end(0)==0){
                 return false;
             }
-            _this.videoWrap.find('.slide_time').addClass('active');
             if (e.target.className == 'processBar_bg' || e.target.className == 'processBar_scrollPoint') {
                 movePoint(e);
             }
-            setTimeout(function(){
-                _this.videoWrap.find('.slide_time').removeClass('active');
-            },100);
             $process.off('mousemove', movePoint);
             _this.timerFn();
         });
@@ -118,19 +114,26 @@
             } else if (e.clientX - 135 > $processBar_bg.width()) {
                 e.clientX = $processBar_bg.width() + 135;
             }
-            var currentTime = Math.ceil(_this.store.duration * (e.clientX - 135) / $processBar_bg.width()),
-                time = _this.unit.formateTime(currentTime).join(':');
+            var currentTime = Math.ceil(_this.store.duration * (e.clientX - 135) / $processBar_bg.width());
             _this.videoPlayer.get(0).currentTime = currentTime;
             _this.store.currentTime = parseInt(currentTime);
-            _this.videoWrap.find('.slide_time').addClass('active').html(time);
             $processBar_scrollPoint.width(e.clientX - 135);
         }
 
         //显示当前正在播放的时间
-        $process.hover(function(){
-            _this.videoWrap.find('.slide_time').addClass('active');
-        },function(){
-            _this.videoWrap.find('.slide_time').removeClass('active')
+        $('.processBar_bg,.processBar_scrollPoint').on('mousemove',function(e){
+            if (e.clientX - 135 <= 0) {
+                e.clientX = 135;
+            } else if (e.clientX - 135 > $processBar_bg.width()) {
+                e.clientX = $processBar_bg.width() + 135;
+            }
+            var overTime = Math.ceil(_this.store.duration * (e.clientX - 135) / $processBar_bg.width()),
+                time = _this.unit.formateTime(overTime).join(':');
+            _this.videoWrap.find('.over_time')
+                .css('left',e.clientX - 150)
+                .addClass('active').html(time);
+        }).on('mouseout',function(){
+            _this.videoWrap.find('.over_time').removeClass('active');
         })
     };
 
@@ -188,7 +191,7 @@
     VideoPlay.prototype.timerFn = function () {
         console.log(this);
         var _this = this;
-        var time;
+        //var time;
         clearInterval(_this.timer);
         _this.timer = setInterval(function () {
             _this.store.currentTime++;
@@ -196,8 +199,8 @@
                 clearInterval(this.timer);
             }
             _this.unit.scrollBarFn(_this.videoWrap, _this.store);
-            time= _this.unit.formateTime(_this.store.currentTime).join(':');
-            _this.videoWrap.find('.slide_time').html(time);
+            //time= _this.unit.formateTime(_this.store.currentTime).join(':');
+            //_this.videoWrap.find('.over_time').html(time);
         }, 1000);
     };
 
