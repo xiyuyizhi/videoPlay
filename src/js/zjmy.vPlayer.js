@@ -20,7 +20,6 @@
         };
         this.options = $.extend(options, op);
         console.log(this.options);
-        this.timer = null;
         this.store = {
             'duration': 0,
             'currentTime': 0
@@ -64,13 +63,17 @@
             console.log('canplay');
             _this.videoWrap.find('.loading').addClass('active')
         });
+        //当前播放时间
+        this.videoPlayer.on('timeupdate',function(e){
+            console.log(e.target.currentTime);
+            _this.store.currentTime= e.target.currentTime.toFixed(2);
+            _this.unit.scrollBarFn(_this.videoWrap, _this.store);
+        })
     };
     VideoPlay.prototype.playing = function () {
         var _this = this;
         this.videoPlayer.on('playing', function (e) {
             console.log('playing');
-            clearInterval(_this.timer);
-            _this.timerFn();
         })
     };
     VideoPlay.prototype.end = function () {
@@ -78,7 +81,6 @@
         this.videoPlayer.on('ended', function (e) {
             console.log('ended');
             _this.store['currentTime'] = 0;
-            clearInterval(_this.timer);
             _this.videoWrap.find('.over_time').html(_this.videoWrap.find('.totalTime').html())
         });
     };
@@ -93,7 +95,6 @@
                 return false;
             }
             $(this).on('mousemove', movePoint);
-            clearInterval(_this.timer);
         });
 
         $(document).on('mouseup', function (e) {
@@ -105,7 +106,6 @@
                 movePoint(e);
             }
             $process.off('mousemove', movePoint);
-            _this.timerFn();
         });
 
         function movePoint(e) {
@@ -146,12 +146,9 @@
             switch (e.target.className) {
                 case 'btn_play':
                     _this.videoPlayer.get(0).play();
-                    clearInterval(_this.timer);
-                    _this.timerFn();
                     break;
                 case 'btn_pause':
                     _this.videoPlayer.get(0).pause();
-                    clearInterval(_this.timer);
                     break;
                 case 'btn_fullScreen':
                     var percent=_this.store.currentTime/_this.store.duration;
@@ -188,22 +185,6 @@
             _this.voiceControl(volume, 'more')
         })
     };
-    VideoPlay.prototype.timerFn = function () {
-        console.log(this);
-        var _this = this;
-        //var time;
-        clearInterval(_this.timer);
-        _this.timer = setInterval(function () {
-            _this.store.currentTime++;
-            if (_this.store.currentTime >= Math.ceil(_this.store.duration)) {
-                clearInterval(this.timer);
-            }
-            _this.unit.scrollBarFn(_this.videoWrap, _this.store);
-            //time= _this.unit.formateTime(_this.store.currentTime).join(':');
-            //_this.videoWrap.find('.over_time').html(time);
-        }, 1000);
-    };
-
     VideoPlay.prototype.voiceControl = function (v, type) {
         if (type == 'less') {
             v = (v - 0.1).toFixed(1);
