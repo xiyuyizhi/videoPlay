@@ -22,7 +22,8 @@
         console.log(this.options);
         this.store = {
             'duration': 0,
-            'currentTime': 0
+            'currentTime': 0,
+            'bufferedEndTime':0 //缓冲时长end位置
         };
         this.videoPlayer = $obj;
         this.videoWrap = $obj.parent();
@@ -63,10 +64,16 @@
             console.log('canplay');
             _this.videoWrap.find('.loading').addClass('active')
         });
+        this.videoPlayer.on('progress',function(e){
+            if(e.target.buffered.length){
+                _this.store.bufferedEndTime=e.target.buffered.end(e.target.buffered.length-1);
+                _this.unit.scrollBarFn(_this.videoWrap, _this.store,'.processBar_buffered');
+            }
+        });
         //当前播放时间
         this.videoPlayer.on('timeupdate',function(e){
             _this.store.currentTime= e.target.currentTime.toFixed(2);
-            _this.unit.scrollBarFn(_this.videoWrap, _this.store);
+            _this.unit.scrollBarFn(_this.videoWrap, _this.store,'.processBar_scrollPoint');
         })
     };
     VideoPlay.prototype.playing = function () {
@@ -101,7 +108,7 @@
             if(_this.videoPlayer.get(0).seekable.end(0)==0){
                 return false;
             }
-            if (e.target.className == 'processBar_bg' || e.target.className == 'processBar_scrollPoint') {
+            if (e.target.className == 'processBar_bg' || e.target.className == 'processBar_scrollPoint' || e.target.className == 'processBar_buffered') {
                 movePoint(e);
             }
             $process.off('mousemove', movePoint);
@@ -120,7 +127,7 @@
         }
 
         //显示当前正在播放的时间
-        $('.processBar_bg,.processBar_scrollPoint').on('mousemove',function(e){
+        $('.processBar_bg,.processBar_scrollPoint,.processBar_buffered').on('mousemove',function(e){
             if (e.clientX - 135 <= 0) {
                 e.clientX = 135;
             } else if (e.clientX - 135 > $processBar_bg.width()) {
@@ -184,6 +191,7 @@
             _this.voiceControl(volume, 'more')
         })
     };
+
     VideoPlay.prototype.voiceControl = function (v, type) {
         if (type == 'less') {
             v = (v - 0.1).toFixed(1);
@@ -237,10 +245,16 @@ Unit.prototype.formateTime = function (second) {
 };
 
 //生成进度条
-Unit.prototype.scrollBarFn = function ($obj, store) {
-    var $scrollPoint = $obj.find('.processBar_scrollPoint'),
-        $processBar_bg = $obj.find('.processBar_bg'),
+Unit.prototype.scrollBarFn = function ($obj,store,className) {
+    var $processBar_bg = $obj.find('.processBar_bg'),
+        $scroll = $obj.find(className),
+        pointWidth;
+    if(className=='.processBar_scrollPoint'){
         pointWidth = (store.currentTime / store.duration) * $processBar_bg.width();
+    }
+    if(className=='.processBar_buffered'){
+        pointWidth = (store.bufferedEndTime / store.duration) * $processBar_bg.width();
+    }
     pointWidth = Math.ceil(pointWidth);
-    $scrollPoint.css('width', pointWidth + 'px');
+    $scroll.css('width', pointWidth + 'px');
 };
