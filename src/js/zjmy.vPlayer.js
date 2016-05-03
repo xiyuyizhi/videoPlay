@@ -23,7 +23,7 @@
         this.store = {
             'duration': 0,
             'currentTime': 0,
-            'bufferedEndTime':0 //缓冲时长end位置
+            'bufferedEndTime': 0 //缓冲时长end位置
         };
         this.videoPlayer = $obj;
         this.videoWrap = $obj.parent();
@@ -57,23 +57,23 @@
             timeStr = _this.unit.formateTime(e.target.duration).join(':');
             _this.videoWrap.find('.totalTime').html(timeStr);
         });
-        this.videoPlayer.on('loadstart',function(e){
+        this.videoPlayer.on('loadstart', function (e) {
             console.log('loadstart');
         });
-        this.videoPlayer.on('canplay',function(e){
+        this.videoPlayer.on('canplay', function (e) {
             console.log('canplay');
             _this.videoWrap.find('.loading').addClass('active')
         });
-        this.videoPlayer.on('progress',function(e){
-            if(e.target.buffered.length){
-                _this.store.bufferedEndTime=e.target.buffered.end(e.target.buffered.length-1);
-                _this.unit.scrollBarFn(_this.videoWrap, _this.store,'.processBar_buffered');
+        this.videoPlayer.on('progress', function (e) {
+            if (e.target.buffered.length) {
+                _this.store.bufferedEndTime = e.target.buffered.end(e.target.buffered.length - 1);
+                _this.unit.scrollBarFn(_this.videoWrap, _this.store, '.processBar_buffered');
             }
         });
         //当前播放时间
-        this.videoPlayer.on('timeupdate',function(e){
-            _this.store.currentTime= e.target.currentTime.toFixed(2);
-            _this.unit.scrollBarFn(_this.videoWrap, _this.store,'.processBar_scrollPoint');
+        this.videoPlayer.on('timeupdate', function (e) {
+            _this.store.currentTime = e.target.currentTime.toFixed(2);
+            _this.unit.scrollBarFn(_this.videoWrap, _this.store, '.processBar_scrollPoint');
         })
     };
     VideoPlay.prototype.playing = function () {
@@ -97,7 +97,7 @@
             $process = this.videoWrap.find('.processBar_control'),
             $processBar_scrollPoint = this.videoWrap.find('.processBar_scrollPoint');
         $process.on('mousedown', function (e) {
-            if(_this.videoPlayer.get(0).seekable.end(0)==0){
+            if (_this.videoPlayer.get(0).seekable.end(0) == 0) {
                 return false;
             }
             $(this).on('mousemove', movePoint);
@@ -105,7 +105,7 @@
 
         $(document).on('mouseup', function (e) {
             console.log('document up');
-            if(_this.videoPlayer.get(0).seekable.end(0)==0){
+            if (_this.videoPlayer.get(0).seekable.end(0) == 0) {
                 return false;
             }
             if (e.target.className == 'processBar_bg' || e.target.className == 'processBar_scrollPoint' || e.target.className == 'processBar_buffered') {
@@ -127,7 +127,7 @@
         }
 
         //显示当前正在播放的时间
-        $('.processBar_bg,.processBar_scrollPoint,.processBar_buffered').on('mousemove',function(e){
+        $('.processBar_bg,.processBar_scrollPoint,.processBar_buffered').on('mousemove', function (e) {
             if (e.clientX - 135 <= 0) {
                 e.clientX = 135;
             } else if (e.clientX - 135 > $processBar_bg.width()) {
@@ -136,9 +136,9 @@
             var overTime = Math.ceil(_this.store.duration * (e.clientX - 135) / $processBar_bg.width()),
                 time = _this.unit.formateTime(overTime).join(':');
             _this.videoWrap.find('.over_time')
-                .css('left',e.clientX - 150)
+                .css('left', e.clientX - 150)
                 .addClass('active').html(time);
-        }).on('mouseout',function(){
+        }).on('mouseout', function () {
             _this.videoWrap.find('.over_time').removeClass('active');
         })
     };
@@ -157,7 +157,8 @@
                     _this.videoPlayer.get(0).pause();
                     break;
                 case 'btn_fullScreen':
-                    var percent=_this.store.currentTime/_this.store.duration;
+                    var percent = _this.store.currentTime / _this.store.duration,
+                        percent1=_this.store.bufferedEndTime / _this.store.duration;
                     if ($(this).text() == '全屏') {
                         _this.videoWrap.addClass('fullScreen');
                         _this.videoPlayer.addClass('fullScreen');
@@ -170,15 +171,16 @@
                         _this.videoWrap.css('width', _this.options.videoWidth);
                         $(this).text('全屏')
                     }
-                    _this.videoWrap.find('.processBar_scrollPoint').width(percent*_this.videoWrap.find('.processBar_bg').width());
+                    _this.videoWrap.find('.processBar_scrollPoint').width(percent * _this.videoWrap.find('.processBar_bg').width());
+                    _this.videoWrap.find('.processBar_buffered').width(percent1 * _this.videoWrap.find('.processBar_bg').width());
                     break;
             }
         });
         //seeking
-        this.videoPlayer.on('seeking',function(e){
+        this.videoPlayer.on('seeking', function (e) {
             _this.videoWrap.find('.loading').removeClass('active')
         })
-        this.videoPlayer.on('seeked',function(e){
+        this.videoPlayer.on('seeked', function (e) {
             _this.videoWrap.find('.loading').addClass('active')
         })
         //音量控制
@@ -239,20 +241,20 @@ Unit.prototype.formateTime = function (second) {
     } else {
         timeArr.push('00');
         timeArr.push('00');
-        timeArr.push(Math.ceil(second)>=10?Math.ceil(second):'0'+Math.ceil(second));
+        timeArr.push(Math.ceil(second) >= 10 ? Math.ceil(second) : '0' + Math.ceil(second));
     }
     return timeArr;
 };
 
 //生成进度条
-Unit.prototype.scrollBarFn = function ($obj,store,className) {
+Unit.prototype.scrollBarFn = function ($obj, store, className) {
     var $processBar_bg = $obj.find('.processBar_bg'),
         $scroll = $obj.find(className),
         pointWidth;
-    if(className=='.processBar_scrollPoint'){
+    if (className == '.processBar_scrollPoint') {
         pointWidth = (store.currentTime / store.duration) * $processBar_bg.width();
     }
-    if(className=='.processBar_buffered'){
+    if (className == '.processBar_buffered') {
         pointWidth = (store.bufferedEndTime / store.duration) * $processBar_bg.width();
     }
     pointWidth = Math.ceil(pointWidth);
