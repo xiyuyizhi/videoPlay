@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     rename = require('gulp-rename'),
     uglify = require('gulp-uglify'),
     LessPluginCleanCSS = require('less-plugin-clean-css'),
+    stripDebug=require('gulp-strip-debug'),
     cleancss = new LessPluginCleanCSS({
         advanced: true
     });
@@ -36,6 +37,7 @@ function buildjs(taskName,srcPath){
             .pipe(gulp.dest(path.join('dist','js')))
             .pipe(rename({suffix: '.min'}))
             .pipe(uglify())//Ñ¹Ëõ
+            .pipe(stripDebug())
             .pipe(gulp.dest(path.join('dist','js')))
     })
 }
