@@ -65,7 +65,6 @@
         });
         //当前播放时间
         this.videoPlayer.on('timeupdate',function(e){
-            console.log(e.target.currentTime);
             _this.store.currentTime= e.target.currentTime.toFixed(2);
             _this.unit.scrollBarFn(_this.videoWrap, _this.store);
         })
